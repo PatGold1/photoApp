@@ -1,1 +1,21 @@
 
+ion-tab-bar {
+  height: 10vh;
+  background: #f1faee;
+  border: none;
+}
+
+ion-tab-button {
+  background: transparent;
+
+}
+
+ion-icon {
+  color: #a8dadc;
+}
+
+.tab-selected {
+  ion-icon {
+    color: #8acbcd;
+  }
+}
