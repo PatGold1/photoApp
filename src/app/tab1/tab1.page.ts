@@ -14,7 +14,9 @@ export class Tab1Page {
 
 
 
-  user: any;
+  user: any = {
+    displayName: 'AssLicker900'
+  };
   imgLoading: boolean;
   myUrl: string;
 
@@ -44,9 +46,17 @@ export class Tab1Page {
   uploadImage(event) {
     this.imgLoading = true;
 
+    let myUID;
+
+    if(!this.afAuth.auth.currentUser){
+      myUID = '12345678'
+    }else{
+      myUID = this.afAuth.auth.currentUser.uid;
+    }
+
     const file = event.target.files[0];
     let randomID = Math.floor(Math.random() * 1000);
-    const filePath = this.afAuth.auth.currentUser.uid + '/' + randomID;
+    const filePath = myUID + '/' + randomID;
     const fileRef = this.storage.ref(filePath)
     const task = this.storage.upload(filePath, file);
 
