@@ -12,6 +12,9 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
@@ -53,7 +56,9 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
   providers: [

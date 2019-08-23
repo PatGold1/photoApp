@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireStorage } from '@angular/fire/storage';
 
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tab1',
@@ -9,8 +11,12 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class Tab1Page {
   user: any;
+  loadingImageUpload: boolean;
 
-  constructor(public afAuth: AngularFireAuth) {}
+  constructor(
+    public afAuth: AngularFireAuth,
+    public storage: AngularFireStorage
+  ) {}
 
 
   ngOnInit(){
@@ -27,7 +33,38 @@ export class Tab1Page {
     console.log("photo");
   }
 
-  uploadImage() {
-    console.log("upload");
+  uploadImage(event) {
+    this.loadingImageUpload = true;
+
+    const file = event.target.files[0];
+    let randomID = Math.floor(Math.random() * 1000);
+    const filePath = this.afAuth.auth.currentUser.uid + '/Images/' + randomID;
+    const fileRef = this.storage.ref(filePath)
+    const task = this.storage.upload(filePath, file);
+
+    task.snapshotChanges().pipe(
+        finalize(() => {
+          const downloadURL = fileRef.getDownloadURL();
+
+          downloadURL.subscribe(url=>{
+             if(url){
+               this.loadingImageUpload = false;
+               console.log(url);
+               // this.activeTankData['photoURL'] = url;
+               //
+               //  this.fireStore.doc('Users/' + this.afAuth.auth.currentUser.uid + '/tanks/' + this.activeTankData['name'])
+               //  .set({
+               //    photoURL: url
+               //  },{
+               //    merge: true
+               //  });
+             }
+          })
+
+        })
+     )
+    .subscribe()
   }
+
+
 }

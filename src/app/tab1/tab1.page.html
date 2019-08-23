@@ -7,7 +7,8 @@
 
   <h3 class="beginText"> Capture or Upload a photo to begin </h3>
 
-  <div class="takePhoto" (click)="takePhoto()">
+  <div class="takePhoto">
+    <input type="file" (change)="uploadImage($event)" />
     <ion-icon name="camera"></ion-icon>
   </div>
 
