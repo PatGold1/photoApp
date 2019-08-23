@@ -1,3 +1,12 @@
+.wrapper {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(#0093E9, #80D0C7);
+}
+
+
+
+
 .loginTopWrapper{
   display: inline-flex;
   width: 100%;
@@ -9,6 +18,7 @@
   .rightInfo{
     width: 50%;
     padding-top: 12%;
+    color: white;
 
     h1{
       font-size: 36px;
@@ -26,6 +36,7 @@
     width: 50%;
     object-fit: contain;
     padding: 7%;
+    animation-delay: 750ms;
 
   }
 }
@@ -42,4 +53,8 @@
   margin-right: auto;
   left: 0;
   right: 0;
+}
+
+firebase-ui {
+  margin-top: 40%;
 }
