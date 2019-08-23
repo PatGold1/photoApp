@@ -1,4 +1,81 @@
-.welcome-card ion-img {
-  max-height: 35vh;
-  overflow: hidden;
+@import url('https://fonts.googleapis.com/css?family=Lato|Playfair+Display&display=swap');
+
+ion-content {
+  --ion-background-color: #F1FAEE;
+}
+
+h4 {
+  margin: 10%;
+  font-family: 'Darker Grotesque';
+  text-align: center;
+  font-size: 16px;
+  margin-top: -10px;
+}
+
+
+.welcome {
+  margin: 10%;
+  font-family: 'Playfair Display';
+  text-align: center;
+}
+
+.signOut {
+  margin-left: 10%;
+}
+
+.takePhoto {
+  margin: 10%;
+  height: 100px;
+  width: 100px;
+  background: #A8DADC;
+  border-radius: 50px;
+  font-size: 42px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  left: 0;
+  right: 0;
+}
+
+.uploadImage {
+  margin: 10%;
+  height: 50px;
+  width: 200px;
+  background: #A8DADC;
+  border-radius: 10px;
+  font-size: 38px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  padding-top: 6px;
+  position: fixed;
+  bottom: 0;
+}
+
+.beginText {
+  font-family: 'Darker Grotesque';
+  text-align: center;
+  font-size: 16px;
+  margin-top: -15px;
+  color: #808080;
+}
+.imgText {
+  font-family: 'Darker Grotesque';
+  text-align: center;
+  font-size: 16px;
+  color: #808080;
+  position: fixed;
+  bottom: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+ion-icon {
+  color: #ECECEC;
+  // border-radius: 100%;
 }

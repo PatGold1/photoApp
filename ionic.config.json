@@ -1,5 +1,7 @@
 {
   "name": "Law",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

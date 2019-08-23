@@ -1,9 +1,15 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <div class="top">
+    <img [src]="user.photoURL" class="circle" />
+  </div>
 
-<ion-content></ion-content>
+  <h1 class="userName">{{ user.displayName }}</h1>
+  <h6 class="userArea"> Australia </h6>
+
+  <div class="mid">
+    <p class="userInfo"> User Information </p>
+  </div>
+
+  <button *ngIf="afAuth.auth.currentUser" (click)="signOut()" class="signOut"> Sign Out </button>
+
+</ion-content>
