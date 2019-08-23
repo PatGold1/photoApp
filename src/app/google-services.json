@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "635816881446",
+    "firebase_url": "https://lawapp-46d65.firebaseio.com",
+    "project_id": "lawapp-46d65",
+    "storage_bucket": "lawapp-46d65.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635816881446:android:2e11293c422b2b43",
+        "android_client_info": {
+          "package_name": "com.patgold.photoApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635816881446-ldunpcmghb5bggvngba304njjbvbh70n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBJOjgufrH3RoiaqT_d5xNnsh9vgOzmMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635816881446-ldunpcmghb5bggvngba304njjbvbh70n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

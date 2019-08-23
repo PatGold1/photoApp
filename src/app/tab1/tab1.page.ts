@@ -16,7 +16,7 @@ export class Tab1Page {
 
   user: any;
   imgLoading: boolean;
-  myUrl: str;
+  myUrl: string;
 
 
 
