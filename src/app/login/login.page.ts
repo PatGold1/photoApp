@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
   }
 
   signIn() {
-    console.log('test')
+    this.router.navigateByUrl('tabs');
   }
 
 //   signInSuccess: function(currentUser, credential, redirectUrl) {
