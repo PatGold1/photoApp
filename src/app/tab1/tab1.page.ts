@@ -16,7 +16,7 @@ export class Tab1Page {
 
   user: any;
   imgLoading: boolean;
-  myUrl: str;
+  myUrl: string;
 
 
 
@@ -56,7 +56,6 @@ export class Tab1Page {
 
           downloadURL.subscribe(url=>{
              if(url){
-               this.loadingImageUpload = false;
                console.log(url);
                this.myUrl = url;
                this.imgLoading = false;
