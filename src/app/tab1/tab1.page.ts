@@ -10,8 +10,16 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+
+
+
+
   user: any;
-  loadingImageUpload: boolean;
+  imgLoading: boolean;
+  myUrl: str;
+
+
+
 
   constructor(
     public afAuth: AngularFireAuth,
@@ -34,11 +42,11 @@ export class Tab1Page {
   }
 
   uploadImage(event) {
-    this.loadingImageUpload = true;
+    this.imgLoading = true;
 
     const file = event.target.files[0];
     let randomID = Math.floor(Math.random() * 1000);
-    const filePath = this.afAuth.auth.currentUser.uid + '/Images/' + randomID;
+    const filePath = this.afAuth.auth.currentUser.uid + '/' + randomID;
     const fileRef = this.storage.ref(filePath)
     const task = this.storage.upload(filePath, file);
 
@@ -50,7 +58,13 @@ export class Tab1Page {
              if(url){
                this.loadingImageUpload = false;
                console.log(url);
-               // this.activeTankData['photoURL'] = url;
+               this.myUrl = url;
+               this.imgLoading = false;
+
+
+
+
+
                //
                //  this.fireStore.doc('Users/' + this.afAuth.auth.currentUser.uid + '/tanks/' + this.activeTankData['name'])
                //  .set({

@@ -49,6 +49,7 @@ h4 {
     margin-right: auto;
     left: 0;
     right: 0;
+    pointer-events: none;
   }
 
   input[type="file"] {
@@ -118,4 +119,18 @@ h4 {
 ion-icon {
   color: #ECECEC;
   // border-radius: 100%;
+}
+
+ion-spinner {
+  text-align: center;
+  margin-top: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.uploadedImage {
+  margin-top: 20%;
+  padding: 10%;
+  object-fit: cover;
 }
