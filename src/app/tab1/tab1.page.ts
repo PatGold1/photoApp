@@ -43,7 +43,7 @@ export class Tab1Page {
           console.log(this.user);
 
           if(dbItem){
-            console.log('Welcome back ' + dbItem.name);
+            console.log('Welcome back ' + dbItem['name']);
             this.currentUserCollection.unsubscribe();
           }else{
             userInDatabase.set({
