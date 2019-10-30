@@ -4,9 +4,6 @@
   background: linear-gradient(#0093E9, #80D0C7);
 }
 
-
-
-
 .loginTopWrapper{
   display: inline-flex;
   width: 100%;
@@ -41,20 +38,51 @@
   }
 }
 
-.signIn {
-  margin: 5%;
+// .signIn {
+//   margin: 5%;
+//   height: 50px;
+//   width: 250px;
+//   background: #A8DADC;
+//   border-radius: 5px;
+//   color: white;
+//   display: block;
+//   margin-left: auto;
+//   margin-right: auto;
+//   left: 0;
+//   right: 0;
+// }
+
+.guest {
   height: 50px;
   width: 250px;
-  background: #A8DADC;
-  border-radius: 5px;
+  background: -webkit-linear-gradient(top, #fcba03, #ffd152);
   color: white;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
+  padding: 5px;
+  text-align: center;
+  margin-left: 17%;
+  margin-bottom: 5%;
+  padding-top: 15px;
 }
 
-.firebaseUItest {
-  margin-top: 40%;
+.facebook {
+  height: 50px;
+  width: 250px;
+  background: -webkit-linear-gradient(top, #2d93fa, #419dfa);
+  color: white;
+  padding: 5px;
+  text-align: center;
+  margin-left: 17%;
+  margin-bottom: 5%;
+  padding-top: 15px;
+}
+
+.google {
+  height: 50px;
+  width: 250px;
+  background: -webkit-linear-gradient(top, #DB4437, #db7f76);
+  color: white;
+  padding: 5px;
+  text-align: center;
+  margin-left: 17%;
+  padding-top: 15px;
 }

@@ -22,8 +22,7 @@ export class Tab3Page {
     }
 
     signOut() {
-      this.afAuth.auth.signOut().then(() => {
-        location.reload();
-      });
+      this.afAuth.auth.signOut();
+      location.reload();
     }
 }

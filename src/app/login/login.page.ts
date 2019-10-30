@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { LoadingController, Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { AngularFireAuth } from '@angular/fire/auth';
+
+import { AuthProvider } from '../providers/auth/auth';
 
 @Component({
   selector: 'app-login',
@@ -8,19 +13,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  loading: any;
 
   constructor(
     public afAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    public loadingController: LoadingController,
+    private authService: AuthProvider,
+    public plt: Platform,
+    private location: Location
   ) { }
 
-  ngOnInit(){
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        this.router.navigateByUrl('tabs');
-      }
-    });
-  }
+  ngOnInit(){}
 
   signInSuccess() {
   }
@@ -29,12 +33,62 @@ export class LoginPage implements OnInit {
     this.router.navigateByUrl('tabs');
   }
 
-//   signInSuccess: function(currentUser, credential, redirectUrl) {
-//   const userId = currentUser.uid;
-//   // Manually redirect.
-//   window.location.assign(`/users/${userId}`);
-//   // Do not automatically redirect.
-//   return false;
-// },
 
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Logging you in...'
+    });
+    await this.loading.present();
+
+    const { role, data } = await this.loading.onDidDismiss();
+    console.log('Loading dismissed!');
+
+  }
+
+  facebookLogin(){
+    this.presentLoading();
+    console.log(this.plt);
+
+    if (!this.plt.is('mobileweb') && (this.plt.is('android') || this.plt.is('ios'))) {
+      this.authService.loginWithFacebook().then(res=>{
+        console.log("SUCCESS");
+        this.loading.dismiss();
+      }).catch(err=>{
+        console.log(err)
+        this.loading.dismiss();
+      })
+    }else{
+      this.authService.loginWithLegacyFacebook().then(res=>{
+        console.log("SUCCESS");
+        this.loading.dismiss();
+      }).catch(err=>{
+        console.log(err)
+        this.loading.dismiss();
+      })
+    }
+  }
+
+  googleLogin(){
+    this.presentLoading();
+    console.log(this.plt);
+
+    if (!this.plt.is('mobileweb') && (this.plt.is('android') || this.plt.is('ios'))) {
+      this.authService.loginWithGoogle().then(res=>{
+        console.log("SUCCESS");
+        this.loading.dismiss();
+      }).catch(err=>{
+        alert(err)
+        this.loading.dismiss();
+      })
+    }else{
+      this.authService.loginWithLegacyGoogle().then(res=>{
+        console.log("SUCCESS");
+        this.loading.dismiss();
+      }).catch(err=>{
+        alert(err)
+        this.loading.dismiss();
+      })
+    }
+
+  }
 }

@@ -2,51 +2,26 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy, LoadingController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+// Firebase
 import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireStorage } from '@angular/fire/storage';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-// import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
 
-// const firebaseUiAuthConfig: firebaseui.auth.Config = {
-//   signInFlow: 'popup',
-//   signInOptions: [
-//     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-//     {
-//       scopes: [
-//         'public_profile',
-//         'email',
-//         'user_likes',
-//         'user_friends'
-//       ],
-//       customParameters: {
-//         'auth_type': 'reauthenticate'
-//       },
-//       provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID
-//     },
-//     // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-//     // firebase.auth.GithubAuthProvider.PROVIDER_ID,
-//     {
-//       requireDisplayName: false,
-//       provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
-//     },
-//     // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-//     // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
-//   ],
-//   tosUrl: '<your-tos-link>',
-//   privacyPolicyUrl: '<your-privacyPolicyUrl-link>',
-//   credentialHelper: firebaseui.auth.CredentialHelper.NONE,
-// };
+import { environment } from '../environments/environment';
 
+import { Facebook } from '@ionic-native/facebook/ngx';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+
+import { AuthProvider } from './providers/auth/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -59,11 +34,15 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    // FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    AuthProvider,
+    Facebook,
+    GooglePlus,
+    LoadingController,
+    { provide: FirestoreSettingsToken, useValue: {} },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

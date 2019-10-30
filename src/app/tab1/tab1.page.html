@@ -2,8 +2,13 @@
 
 <ion-content>
   <!-- <img [src]="user.photoURL" /> -->
-  <h1 *ngIf="user.displayName" class="welcome">Welcome {{user.displayName}}</h1>
-  <h1 *ngIf="!user.displayName" class="welcome">Weclome {{user.email}} !</h1>
+
+  <label *ngIf="user">
+    <h1 *ngIf="user.displayName" class="welcome">Welcome {{user.displayName}}</h1>
+    <h1 *ngIf="!user.displayName" class="welcome">Weclome {{user.email}} !</h1>
+  </label>
+  
+  <h1 *ngIf="!user" class="welcome">Weclome Guest !</h1>
 
   <h3 class="beginText"> Capture or Upload a photo to begin </h3>
 

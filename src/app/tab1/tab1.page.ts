@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorage } from '@angular/fire/storage';
-
+import { AngularFirestore } from '@angular/fire/firestore';
 import { finalize } from 'rxjs/operators';
 
 @Component({
@@ -18,12 +18,15 @@ export class Tab1Page {
   imgLoading: boolean;
   myUrl: string;
 
+  currentUserCollection: any;
+
 
 
 
   constructor(
     public afAuth: AngularFireAuth,
-    public storage: AngularFireStorage
+    public storage: AngularFireStorage,
+    public fireStore: AngularFirestore
   ) {}
 
 
@@ -32,8 +35,34 @@ export class Tab1Page {
       if (user) {
         this.user = user;
         console.log(user)
+
+        var userInDatabase = this.fireStore.doc('Users/' + this.user.uid)
+
+        this.currentUserCollection = userInDatabase.valueChanges().subscribe(
+        dbItem =>{
+          console.log(this.user);
+
+          if(dbItem){
+            console.log('Welcome back ' + dbItem.name);
+            this.currentUserCollection.unsubscribe();
+          }else{
+            userInDatabase.set({
+              name: this.user['displayName'],
+              email: this.user['email'],
+              pic: this.user['photoURL'],
+              uid: this.user['uid']
+            })
+
+            console.log('Your information has been saved, ' + this.user.displayName);
+            this.currentUserCollection.unsubscribe();
+          }
+        });
+
       }
     });
+
+
+
   }
 
 
@@ -46,7 +75,8 @@ export class Tab1Page {
 
     const file = event.target.files[0];
     let randomID = Math.floor(Math.random() * 1000);
-    const filePath = this.afAuth.auth.currentUser.uid + '/' + randomID;
+    const filePath = this.afAuth.auth.currentUser.uid + randomID;
+    console.log('Saving to ' + filePath);
     const fileRef = this.storage.ref(filePath)
     const task = this.storage.upload(filePath, file);
 
@@ -60,24 +90,43 @@ export class Tab1Page {
                this.myUrl = url;
                this.imgLoading = false;
 
+               var geoOptions = {
+                 enableHighAccuracy: true,
+                 timeout: 5000,
+                 maximumAge: 0
+               }
 
+               navigator.geolocation.getCurrentPosition((position) => {
 
+                 let lat = position.coords.latitude;
+                 let lng = position.coords.longitude;
 
+                 console.log('My Position is ' + lat + ', ' + lng);
+                 console.log('Location accuracy at ' + position.coords.accuracy);
 
-               //
-               //  this.fireStore.doc('Users/' + this.afAuth.auth.currentUser.uid + '/tanks/' + this.activeTankData['name'])
-               //  .set({
-               //    photoURL: url
-               //  },{
-               //    merge: true
-               //  });
+                 this.fireStore.doc('Users/' + this.afAuth.auth.currentUser.uid + '/images/' + randomID)
+                 .set({
+                   photoURL: url,
+                   imageID: randomID,
+                   date: Date.now(),
+                   lat: lat,
+                   lng: lng
+                 },{
+                   merge: true
+                 });
+
+                 console.log('Image Saved, hurrah!')
+
+               }, error => {
+                 console.log(error)
+               }, geoOptions);
+
              }
           })
 
         })
      )
-    .subscribe()
+    .subscribe();
   }
-
 
 }
