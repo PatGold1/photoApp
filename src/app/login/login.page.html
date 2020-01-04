@@ -1,18 +1,47 @@
 <ion-content>
   <div class="wrapper">
-
-      <div class="loginTopWrapper">
-        <img src="assets/logo.png" class="logo animated zoomIn">
-        <div class="rightInfo">
-          <h1> Dummy </h1>
-          <h2> dummy text </h2>
-        </div>
+    <div class="loginTopWrapper">
+      <img src="assets/logofinal.png" class="logo animated zoomIn">
+      <div class="rightInfo">
+        <h1> Captis </h1>
+        <h2></h2>
       </div>
+    </div>
 
-  <!-- <div class="guest" (click)="signIn()"> Login as Guest </div> -->
-  <div class="facebook" (click)="facebookLogin()"> Login with Facebook </div>
-  <div class="google" (click)="googleLogin()"> Login with Google </div>
+    <div class="invisTouch" (click)="nextStep()"> </div>
 
+    <div *ngIf="!step2">
+      <div class="signInButton" (click)="nextStep()"> Sign In </div>
+    </div>
+
+    <div *ngIf="step2" class="animated slideInUp">
+      <!-- <div class="guest" (click)="signIn()"> Login as Guest </div> -->
+      <div class="content">
+        <ion-icon name="close" class="closeCross" (click)="nextStep()"></ion-icon>
+
+        <!-- EMAIL/PASSWORD LOGIN FORM -->
+        <form class="manualForm" (ngSubmit)="loginButton()">
+          <ion-item>
+            <ion-input type="text" placeholder="example@gmail.com" class="username" name="email" [(ngModel)]="loginInputs.email" required validate></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="password" placeholder="*********" class="password" name="password" [(ngModel)]="loginInputs.password" required validate></ion-input>
+          </ion-item>
+
+          <button type="submit" class="loginButton"> login </button>
+        </form>
+
+        <a href="#" class="forgot"> forgot password? </a>
+
+        <h3 class="orText"> Or Log In With </h3>
+
+        <div class="images">
+          <img src="assets/facebook.png" class="facebook" (click)="facebookLogin()">
+          <img src="assets/google.png" class="google" (click)="googleLogin()">
+        </div>
+
+      </div>
+    </div>
   </div>
 </ion-content>
 

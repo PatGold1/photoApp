@@ -1,129 +1,132 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Playfair+Display&display=swap');
 
 ion-content {
-  --ion-background-color: #F1FAEE;
+  --ion-background-color: #F8FBFF;
 }
-
-h4 {
-  margin: 10%;
-  font-family: 'Darker Grotesque';
-  text-align: center;
-  font-size: 16px;
-  margin-top: -10px;
-}
-
 
 .welcome {
-  margin: 10%;
-  font-family: 'Playfair Display';
-  text-align: center;
-  font-size: 21px;
+  margin: 5%;
+  font-family: 'Open Sans';
+  font-size: 28px;
   margin-top: 25%;
+  color: #9174d6;
 }
 
-.signOut {
-  margin-left: 10%;
+@keyframes floating {
+  from { transform: translate(0,  0px); }
+  65%  { transform: translate(0, 5px); }
+  to   { transform: translate(0, -0px); }
 }
 
-.takePhoto {
-  margin: 10%;
-  height: 100px;
-  width: 100px;
-  background: #A8DADC;
-  border-radius: 50px;
-  font-size: 42px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
-  left: 0;
-  right: 0;
+@keyframes floating2 {
+  from { transform: translate(0,  0px); }
+  40%  { transform: translate(0, 5px); }
+  to   { transform: translate(0, -0px); }
+}
 
-  text-align: center;
+.uploadOptions {
+  display: flex;
+  margin-bottom: 20%;
+  .cameraUpload {
+    height: 150px;
+    width: 150px;
+    background: #F8DE7E;
+    margin-left: 10%;
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    box-shadow: 5px 5px 5px #c9c9c9;
 
-  ion-icon{
-    margin-top: 30px;
-    /* line-height: 40px !important; */
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    pointer-events: none;
+    .cameraIcon {
+      font-size: 32px;
+      color: #9174d6;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 35%;
+    }
+
+    .cameraText {
+      text-align: center;
+      color: #9174d6;
+      font-size: 10px;
+      font-family: "Open Sans";
+      margin-top: -1%;
+    }
   }
 
-  input[type="file"] {
-    margin: 10%;
-    height: 100px;
-    width: 100px;
-    background: #A8DADC;
-    border-radius: 50px;
-    font-size: 42px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 00px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    height: 100px;
-    font-size: 0px;
-    /* width: 50px; */
-    position: absolute;
+  .phoneUpload {
+    flex: 1;
+    height: 150px;
+    width: 150px;
+    margin-left: 7%;
+    margin-right: 10%;
+    background: #F8DE7E;
+    animation-name: floating2;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    box-shadow: 5px 5px 5px #c9c9c9;
+
+    .file {
+      height: 150px;
+      width: 150px;
+      opacity: 0;
+    }
+
+      // input[type="file"] {
+      //   margin: 10%;
+      //   height: 100px;
+      //   width: 100px;
+      //   background: white;
+      //   border-radius: 10px;
+      //   font-size: 42px;
+      //   height: 100px;
+      //   font-size: 0px;
+      //   position: absolute;
+      //   box-shadow: 0px 0px 7px #7d7d7d;
+
+
+    .addIcon {
+      font-size: 32px;
+      color: #9174d6;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: -65%;
+    }
+
+    .uploadText {
+      text-align: center;
+      color: #9174d6;
+      font-size: 10px;
+      font-family: "Open Sans";
+      margin-top: -1%;
+    }
   }
-}
-
-
-
-
-.specialInput{
-}
-
-.uploadImage {
-  margin: 10%;
-  height: 50px;
-  width: 200px;
-  background: #A8DADC;
-  border-radius: 10px;
-  font-size: 38px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  padding-top: 6px;
-  position: fixed;
-  bottom: 0;
 }
 
 .beginText {
-  font-family: 'Darker Grotesque';
+  margin-top: 20%;
+  font-family: 'Open Sans';
   text-align: center;
-  font-size: 16px;
-  margin-top: -15px;
-  color: #808080;
+  font-size: 14px;
+  color: #8f8f8f;
 }
-.imgText {
-  font-family: 'Darker Grotesque';
+
+.topText {
+  margin-top: 10%;
+  font-family: 'Open Sans';
   text-align: center;
-  font-size: 16px;
-  color: #808080;
-  position: fixed;
-  bottom: 0;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-}
-ion-icon {
-  color: #ECECEC;
-  // border-radius: 100%;
+  font-size: 14px;
+  color: #8f8f8f;
 }
 
 ion-spinner {
   text-align: center;
-  margin-top: 40%;
+  margin-top: 10%;
+  margin-bottom: 30%;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -133,4 +136,55 @@ ion-spinner {
   margin-top: 20%;
   padding: 10%;
   object-fit: cover;
+}
+
+.moreInfo {
+  margin-top: -10%;
+}
+
+
+.successful {
+  margin: 20%;
+}
+
+.test {
+  margin-top: -3%;
+}
+
+.loadingText {
+  margin: 20%;
+}
+
+.information {
+  height: 50px;
+  width: 60%;
+  margin-left: 20%;
+  background: #9174d6;
+  box-shadow: 0px 0px 5px #999999;
+  margin-bottom: 20%;
+
+  .informationText {
+    padding: 6%;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    font-family: "Open Sans";
+  }
+}
+
+.returnButton {
+  height: 50px;
+  width: 60%;
+  margin-left: 20%;
+  background: #9174d6;
+  box-shadow: 0px 0px 5px #999999;
+  margin-bottom: 5%;
+
+  .returnButtonText {
+    padding: 6%;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    font-family: "Open Sans";
+  }
 }

@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { PopoverComponent } from '../popover/popover.component'
+
+import { PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -9,20 +13,33 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class Tab3Page {
 
     user: any;
+    myUserImages:any
 
-    constructor(public afAuth: AngularFireAuth) {}
-
-    ngOnInit(){
+    constructor(
+      public popoverCtrl: PopoverController,
+      public afAuth: AngularFireAuth,
+      public fireStore: AngularFirestore
+    ) {
       this.afAuth.authState.subscribe((user) => {
         if (user) {
           this.user = user;
-          console.log(user)
+
+            this.fireStore.collection('Users/' + user['uid'] + '/images').valueChanges().subscribe(values => {
+              this.myUserImages = values;
+              console.log(this.myUserImages);
+            });
+
         }
       });
+
+
     }
 
-    signOut() {
-      this.afAuth.auth.signOut();
-      location.reload();
-    }
+   async showPopOver(ev: any) {
+     const popover = await this.popoverCtrl.create({
+         component: PopoverComponent,
+         event: ev
+     });
+     return await popover.present();
+ }
 }

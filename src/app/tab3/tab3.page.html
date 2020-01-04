@@ -1,15 +1,63 @@
-<ion-content>
-  <div class="top">
-    <img [src]="user.photoURL" class="circle" />
+<ion-content *ngIf="user" >
+
+
+  <ion-icon name="settings" class="settingsIcon" (click)="showPopOver()"></ion-icon>
+  <ion-icon name="menu" class="menuIcon"></ion-icon>
+
+  <!-- <div class="top" [ngStyle]="{ 'background-image' : 'url(' + user.photoURL + ')' }"></div> -->
+
+  <div class="headInfo">
+    <img [src]="user.photoURL" src="assets/default.png" onerror="this.src='assets/default.jpg'" class="circle" />
+    <div class="textInfo">
+      <h1 class="userName" *ngIf="user.displayName">{{ user.displayName }}</h1>
+      <h1 class="userName" *ngIf="!user.displayName">{{ user.email }}</h1>
+      <h5 class="moreText"> Level 1 </h5>
+    </div>
   </div>
 
-  <h1 class="userName">{{ user.displayName }}</h1>
-  <h6 class="userArea"> Australia </h6>
+  <!-- <div class="uploads">
+    <h5 class="recentText"> Recent Uploads </h5>
 
-  <div class="mid">
-    <p class="userInfo"> User Information </p>
-  </div>
+    <div class="mid">
+      <span *ngFor="let image of myUserImages">
 
-  <button *ngIf="afAuth.auth.currentUser" (click)="signOut()" class="signOut"> Sign Out </button>
+        <ion-card class="card">
+          <ion-card-header>
+            <div class="cardInfo">
+              <ion-card-title class="ID">Upload Number: <br> #{{image.imageID}} </ion-card-title>
+              <ion-card-title class="coords"> x: {{image.lat}}, <br> y: {{image.lng}}</ion-card-title>
+            </div>
+
+          </ion-card-header>
+
+          <ion-card-content>
+            <img [src]="image.photoURL" class="image">
+          </ion-card-content>
+
+          <ion-card-title class="date"> {{image.date | date:'fullDate'}}</ion-card-title>
+        </ion-card>
+      </span>
+    </div>
+  </div> -->
+
+  <h5 class="recentText"> Recent Uploads </h5>
+
+    <span *ngFor="let image of myUserImages">
+      <div class="eachImage">
+
+        <div class="leftData">
+          <img [src]="image.photoURL" class="imageTest">
+        </div>
+
+        <div class="rightData">
+          <h5 class="imageID"> {{image.imageID}} </h5>
+          <h5 class="imageCoords"> x: {{image.lat}}, <br> y: {{image.lng}} </h5>
+          <h5 class="imageDate"> {{image.date | date:'fullDate'}} </h5>
+        </div>
+      </div>
+    </span>
+
+
+
 
 </ion-content>

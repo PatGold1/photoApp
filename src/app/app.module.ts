@@ -21,11 +21,18 @@ import { environment } from '../environments/environment';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
+
 import { AuthProvider } from './providers/auth/auth';
 
+import { PopoverComponent } from './popover/popover.component'
+
+
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, PopoverComponent],
+  entryComponents: [PopoverComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -41,6 +48,9 @@ import { AuthProvider } from './providers/auth/auth';
     AuthProvider,
     Facebook,
     GooglePlus,
+    AndroidPermissions,
+    Geolocation,
+    LocationAccuracy,
     LoadingController,
     { provide: FirestoreSettingsToken, useValue: {} },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

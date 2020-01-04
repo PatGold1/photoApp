@@ -4,26 +4,80 @@
   <!-- <img [src]="user.photoURL" /> -->
 
   <label *ngIf="user">
-    <h1 *ngIf="user.displayName" class="welcome">Welcome {{user.displayName}}</h1>
-    <h1 *ngIf="!user.displayName" class="welcome">Weclome {{user.email}} !</h1>
+    <h1 *ngIf="user.displayName" class="welcome">Welcome, <br> {{user.displayName}}</h1>
+    <h1 *ngIf="!user.displayName" class="welcome">Welcome, <br> {{user.email}}</h1>
   </label>
-  
-  <h1 *ngIf="!user" class="welcome">Weclome Guest !</h1>
 
-  <h3 class="beginText"> Capture or Upload a photo to begin </h3>
+  <h1 *ngIf="!user" class="welcome">Welcome, <br> Guest </h1>
 
-  <div class="takePhoto" *ngIf="!myUrl && !imgLoading">
-    <input type="file" (change)="uploadImage($event)" />
-    <ion-icon name="camera"></ion-icon>
+  <div class="lowContent" *ngIf="!imgLoading">
+    <h3 class="beginText"> Capture or Upload an image to begin  </h3>
   </div>
 
-  <ion-spinner *ngIf="imgLoading" name="crescent" color="secondary"></ion-spinner>
+  <div *ngIf="!information">
+    <!-- <div class="takePhoto" *ngIf="!imgLoading">
+      <input type="file" (change)="uploadImage($event)" />
+      <ion-icon name="camera"></ion-icon>
+    </div> -->
 
-  <img  class="uploadedImage" *ngIf="myUrl " [src]="myUrl" />
+    <div class="uploadOptions">
+      <div class="cameraUpload">
+        <ion-icon name="camera" class="cameraIcon"></ion-icon>
+        <h5 class="cameraText"> Camera </h5>
+      </div>
 
-  <!-- <br>
-  <button class="uploadImage" (click)="uploadImage()">
-    <ion-icon name="cloud-upload"> </ion-icon>
-  </button>
-  <h3 class="imgText"> Upload a Photo </h3> -->
+      <div class="phoneUpload">
+        <input type="file" class="file" (change)="uploadImage($event)" />
+        <ion-icon name="add" class="addIcon"></ion-icon>
+        <h5 class="uploadText"> Upload </h5>
+      </div>
+    </div>
+
+    <div class="loading" *ngIf="imgLoading">
+      <ion-spinner name="bubbles" color="tertiary"></ion-spinner>
+      <ion-text class="loadingText"> Image Loading. Please Wait.. </ion-text>
+    </div>
+
+    <div class="postText">
+      <ion-text *ngIf="myUrl" class="successful"> Image Uploaded Successfully </ion-text>
+    </div>
+
+    <div class="information" (click)="nextStep()">
+      <h3 class="informationText"> Information </h3>
+      <h3 class="topText"> Please Review the Information Page </h3>
+    </div>
+
+  </div>
+
+  <div *ngIf="information" class="animated fadeInUpBig">
+    <ion-card>
+        <img src="assets/payment-banner.jpg" />
+        <ion-card-header>
+          <ion-card-title> Taking A Successful Photo </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+        </ion-card-content>
+      </ion-card>
+
+    <ion-card>
+      <img src="assets/payment-banner.jpg" />
+      <ion-card-header>
+        <ion-card-title> Payment System </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+      </ion-card-content>
+    </ion-card>
+
+    <div class="returnButton" (click)="nextStep()">
+      <div class="returnButtonText"> Return </div>
+    </div>
+  </div>
+
+
+
+  <!-- <button *ngIf="myUrl">  </button> -->
+
+
 </ion-content>

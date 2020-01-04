@@ -17,6 +17,7 @@ export class Tab1Page {
   user: any;
   imgLoading: boolean;
   myUrl: string;
+  information: any;
 
   currentUserCollection: any;
 
@@ -110,7 +111,9 @@ export class Tab1Page {
                    imageID: randomID,
                    date: Date.now(),
                    lat: lat,
-                   lng: lng
+                   lng: lng,
+                   approved: false,
+                   userID: this.afAuth.auth.currentUser.uid
                  },{
                    merge: true
                  });
@@ -127,6 +130,14 @@ export class Tab1Page {
         })
      )
     .subscribe();
+  }
+
+  nextStep() {
+    if(this.information) {
+      this.information = false;
+    } else {
+      this.information = true;
+    }
   }
 
 }

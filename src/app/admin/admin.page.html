@@ -1,0 +1,61 @@
+<ion-content>
+  <div class="corePadding">
+    <ion-icon name="arrow-back" class="backArrow" (click)="routeHome()"></ion-icon>
+
+    <div *ngIf="!step2" class="All">
+      <div class="IfElse">
+        <h3 class="all_entries"> <u> All </u> </h3>
+        <h3 class="approved_entries"> <a (click)="nextStep()"> Approved </a> </h3>
+      </div>
+      <span *ngFor="let image of userImages">
+
+        <ion-card *ngIf="!image.approved" class="card">
+          <ion-card-header>
+            <ion-card-title class="ID">#{{image.imageID}} </ion-card-title>
+            <br>
+            <ion-card-subtitle><a>x: {{image.lat}}, <br> y: {{image.lng}}</a></ion-card-subtitle> <br>
+            <ion-card-title class="date"> {{image.date | date:'fullDate'}}</ion-card-title>
+
+
+          </ion-card-header>
+
+          <ion-card-content>
+            <img [src]="image.photoURL">
+          </ion-card-content>
+
+          <div class="options">
+            <ion-icon name="checkmark"  (click)="approveItem(image)" class="tick"></ion-icon>
+            <ion-icon name="close" (click)="deleteItem(image)" class="cross"></ion-icon>
+          </div>
+        </ion-card>
+      </span>
+    </div>
+
+    <div *ngIf="step2" class="Approved">
+      <div class="IfElse">
+        <h3 class="all_entries"> <a (click)="nextStep()"> All </a> </h3>
+        <h3 class="approved_entries"> <u> Approved </u> </h3>
+      </div>
+      <span *ngFor="let image of userImages">
+          <ion-card *ngIf="image.approved" class="card">
+            <ion-card-header>
+
+              <ion-card-title class="ID">#{{image.imageID}} </ion-card-title>
+              <br>
+              <ion-card-subtitle><a>x: {{image.lat}}, <br> y: {{image.lng}}</a></ion-card-subtitle> <br>
+              <ion-card-title class="date"> {{image.date | date:'fullDate'}}</ion-card-title>
+
+
+            </ion-card-header>
+
+            <ion-card-content>
+              <img [src]="image.photoURL">
+            </ion-card-content>
+          </ion-card>
+      </span>
+    </div>
+
+
+
+  </div>
+</ion-content>

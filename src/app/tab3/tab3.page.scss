@@ -1,60 +1,53 @@
 
 ion-content {
-  --ion-background-color: #F1FAEE;
+  --ion-background-color: #F8FBFF;
 }
 
 .top {
   width: 100%;
   height: 20%;
-  background: #72BF74;
+  //background: #72BF74;
   padding-top: 20%;
+  opacity: 0.6;
 }
 
-.userInfo {
-  padding: 10px;
-  font-family: 'Darker Grotesque';
-}
+.headInfo {
+  display: flex;
+  margin-bottom: 10%;
 
-.circle {
-  width: 100px;
-  height: 100px;
-  background: green;
-  border-radius: 50%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  box-shadow: 0px 1px 5px 0px #676767;
-}
+  .circle {
+    width: 100px;
+    height: 100px;
+    background: #e8e8e8;
+    border-radius: 50%;
+    box-shadow: 0px 1px 10px 0px #676767;
+    margin-left: 10%;
+    margin-right: 5%;
+    margin-top: 30%;
+    // margin-top: -12%;
+    object-fit: cover;
+  }
+  .textInfo {
+    flex: 1;
+    margin-top: 30%;
 
-.userName {
-  text-align: center;
-  margin-top: 15%;
-  font-family: "Playfair+Display";
+    .userName {
+      font-family: "Roboto";
+    }
+    .moreText {
+      font-family: "Open Sans";
+      margin-top: -3%;
+      color: #8f8f8f;
+      font-size: 18px;
+    }
+  }
 }
 
 .mid {
-  width: 80%;
-  height: 300px;
-  // background: #A8E3FF;
-  opacity: 0.5;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  border-radius: 10px;
-  box-shadow: 0px 1px 5px 0px #676767;
+  .card {
+    background: white;
+  }
 }
-
-.userArea {
-  font-size: 10px;
-  text-align: center;
-  margin-top: -2%;
-  font-family: 'Darker Grotesque';
-}
-
 
 .signOut {
   margin: 5%;
@@ -62,10 +55,89 @@ ion-content {
   width: 200px;
   background: #A8DADC;
   border-radius: 5px;
-  color: white;
+  color: black;
   display: block;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
+}
+
+.settingsIcon{
+  position: absolute;
+  z-index: 90000;
+  right: 0%;
+  margin: 10%;
+  color: #3b3b3b;
+  font-size: 26px;
+}
+
+.menuIcon{
+  position: absolute;
+  z-index: 90000;
+  left: 0%;
+  margin: 10%;
+  color: #3b3b3b;
+  font-size: 26px;
+}
+
+.recentText {
+  font-family: 'Open Sans';
+  text-align: center;
+  font-size: 14px;
+  color: #8f8f8f;
+}
+
+.eachImage {
+  display: flex;
+  background: #9174d6;
+  width: 80%;
+  height: 21%;
+  margin-left: 10%;
+  margin-bottom: 5%;
+  padding: 3%;
+  box-shadow: 5px 5px 5px #c9c9c9;
+  animation-duration: 3s;
+  animation-name: floating;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.imageTest {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.imageID {
+  color: white;
+  font-size: 16px;
+  margin-top: -1%;
+  text-shadow: 3px 3px 1px gray;
+}
+
+.imageCoords {
+  color: white;
+  font-size: 10px;
+}
+
+.imageDate {
+  color: white;
+  font-size: 12px;
+}
+
+.rightData {
+  flex: 1;
+  margin-left: 3%;
+  height: 80%;
+}
+
+.leftData  {
+  width: 50%;
+}
+
+@keyframes floating {
+  from { transform: translate(0,  0px); }
+  65%  { transform: translate(0, 5px); }
+  to   { transform: translate(0, -0px); }
 }
